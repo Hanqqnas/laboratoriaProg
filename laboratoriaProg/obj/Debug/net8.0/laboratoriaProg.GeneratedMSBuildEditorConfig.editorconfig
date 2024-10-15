@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Users\hanna.kanas\RiderProjects\laboratoriaProg\laboratoriaProg
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Users/hanna.kanas/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Calculator/Result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsY3VsYXRvclxSZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Users/hanna.kanas/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
