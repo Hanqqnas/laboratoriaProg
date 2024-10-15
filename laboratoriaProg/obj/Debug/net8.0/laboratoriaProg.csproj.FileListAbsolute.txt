@@ -28,3 +28,4 @@ D:\Users\hanna.kanas\RiderProjects\laboratoriaProg\laboratoriaProg\obj\Debug\net
 D:\Users\hanna.kanas\RiderProjects\laboratoriaProg\laboratoriaProg\obj\Debug\net8.0\laboratoriaProg.pdb
 D:\Users\hanna.kanas\RiderProjects\laboratoriaProg\laboratoriaProg\obj\Debug\net8.0\laboratoriaProg.genruntimeconfig.cache
 D:\Users\hanna.kanas\RiderProjects\laboratoriaProg\laboratoriaProg\obj\Debug\net8.0\ref\laboratoriaProg.dll
+D:\Users\hanna.kanas\RiderProjects\laboratoriaProg\laboratoriaProg\obj\Debug\net8.0\laboratoriaProg.sourcelink.json
