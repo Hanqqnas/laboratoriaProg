@@ -4,6 +4,16 @@ namespace laboratoriaProg.Controllers;
 
 public class CalculatorController : Controller
 {
+    [HttpPost]
+    public IActionResult Result(Calculator model)
+    {
+        if (!model.IsValid())
+        {
+            return View("Error");
+        }
+        return View(model);
+    }
+    [HttpGet]
     public IActionResult Result(Operator2? operator2, double? x, double? y)
     {
         if (x == null || y == null)
@@ -52,6 +62,7 @@ public class CalculatorController : Controller
 
         return View();
     }
+    
     public IActionResult Form()
     {
         return View();

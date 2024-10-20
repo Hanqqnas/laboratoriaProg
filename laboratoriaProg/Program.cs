@@ -34,4 +34,9 @@ app.MapControllerRoute(
     pattern: "Laboratorium1/AgeCalculator",
     defaults: new { controller = "Laboratorium1", action = "AgeCalculator" });
 
+app.MapControllerRoute(
+    name: "calculator",
+    pattern: "Calculator/{action=Form}/{id?}",
+    defaults: new { controller = "Calculator" });
+
 app.Run();
