@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\48531\RiderProjects\laboratoriaProg\laboratoriaProg
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Birth/Form.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlydGhcRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Birth/Result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlydGhcUmVzdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Calculator/Form.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsY3VsYXRvclxGb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Shared/Calculator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENhbGN1bGF0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Shared/CustomError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEN1c3RvbUVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Shared/Error.cshtml]

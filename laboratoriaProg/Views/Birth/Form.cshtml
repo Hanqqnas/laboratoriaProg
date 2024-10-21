@@ -1,0 +1,20 @@
+@model laboratoriaProg.Models.Birth
+
+<div class="container">
+    <form method="post" action="/Birth/Result">
+        <div class="mb-3">
+            <label for="name" class="form-label">Imię:</label>
+            <input class="form-control" type="text" id="name" name="Name" />
+        </div>
+        <div class="mb-3">
+            <label for="birthDate" class="form-label">Data urodzenia:</label>
+            <input class="form-control" type="date" id="birthDate" name="BirthDate" />
+        </div>
+        <button type="submit" class="btn btn-primary">Oblicz wiek</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+    <div class="alert alert-danger mt-3">@ViewBag.ErrorMessage</div>
+    }
+</div>
