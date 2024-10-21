@@ -62,9 +62,20 @@ public class CalculatorController : Controller
     {
         if (!model.IsValid())
         {
-            return View("Error");
+            ViewBag.ErrorMessage = "Niepoprawne dane wejściowe.";
+            return View("Form");
         }
-        return View(model);
+
+        try
+        {
+            model.Calculate(); 
+            return View(model);
+        }
+        catch (DivideByZeroException)
+        {
+            ViewBag.ErrorMessage = "Error!";
+            return View("Form");
+        }
     }
     
     
