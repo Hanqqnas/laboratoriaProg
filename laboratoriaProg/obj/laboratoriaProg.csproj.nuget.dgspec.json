@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\hanna.kanas\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj": {}
+    "C:\\Users\\48531\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj": {}
   },
   "projects": {
-    "D:\\Users\\hanna.kanas\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj": {
+    "C:\\Users\\48531\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\hanna.kanas\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj",
+        "projectUniqueName": "C:\\Users\\48531\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj",
         "projectName": "laboratoriaProg",
-        "projectPath": "D:\\Users\\hanna.kanas\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj",
-        "packagesPath": "D:\\Users\\hanna.kanas\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\hanna.kanas\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\obj\\",
+        "projectPath": "C:\\Users\\48531\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\laboratoriaProg.csproj",
+        "packagesPath": "C:\\Users\\48531\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\48531\\RiderProjects\\laboratoriaProg\\laboratoriaProg\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "D:\\Users\\hanna.kanas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\48531\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

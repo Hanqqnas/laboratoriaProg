@@ -4,6 +4,12 @@ namespace laboratoriaProg.Controllers;
 
 public class CalculatorController : Controller
 {
+    [HttpGet]
+    public IActionResult Form()
+    {
+        return View();
+    }
+    [HttpPost]
     public IActionResult Result(Operator2? operator2, double? x, double? y)
     {
         if (x == null || y == null)
@@ -15,7 +21,7 @@ public class CalculatorController : Controller
         if (!operator2.HasValue)
         {
             ViewBag.ErrorMessage = "Nieznany operator.";
-            return View("Calculator");
+            return View("Form");
         }
 
         ViewBag.Op = operator2;
@@ -52,10 +58,27 @@ public class CalculatorController : Controller
 
         return View();
     }
-    public IActionResult Form()
+    public IActionResult Result(Calculator model)
     {
-        return View();
+        if (!model.IsValid())
+        {
+            ViewBag.ErrorMessage = "Niepoprawne dane wejściowe.";
+            return View("Form");
+        }
+
+        try
+        {
+            model.Calculate(); 
+            return View(model);
+        }
+        catch (DivideByZeroException)
+        {
+            ViewBag.ErrorMessage = "Error!";
+            return View("Form");
+        }
     }
+    
+    
 }
 public enum Operator2
 {
