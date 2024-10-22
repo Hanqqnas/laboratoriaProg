@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\48531\RiderProjects\laboratoriaProg\laboratoriaProg
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Contact/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/AgeCalculator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZ2VDYWxjdWxhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

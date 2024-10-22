@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Kontakty</h2>
+<a class="btn btn-primary" asp-action="Add" asp-controller="Contact">Dodaj kontakt</a>
+<h4>Lista kontaktów</h4>
+<table class="table">
+<thread>
+    <tr>
+        <th>
+            Imię
+        </th>
+        <th>
+            Nazwisko
+        </th>
+        <th>
+            Akcje
+        </th>
+    </tr>
+</thread>
+<tbody>
+@foreach(var entry in @Model)
+{
+    <tr>
+        <td>
+            @entry.Value.FirstName
+        </td>
+        <td>
+            @entry.Value.LastName
+        </td>
+        <td>
+            <div>
+                <a>Edycja</a>
+                <a>Szczegóły</a>
+                <a class = "btn btn-danger" asp-action="Delete" asp-route-id=@entry.Value.Id>Usuń</a>
+            </div>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
