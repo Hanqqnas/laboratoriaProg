@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("laboratoriaProg")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1e13e664f03f3c8ef7a076f41e29e84bc36bd69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+76f06f700e8a6bbb8f49daca9d3065853994ed56")]
 [assembly: System.Reflection.AssemblyProductAttribute("laboratoriaProg")]
 [assembly: System.Reflection.AssemblyTitleAttribute("laboratoriaProg")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

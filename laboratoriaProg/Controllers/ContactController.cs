@@ -58,8 +58,20 @@ public class ContactController : Controller
     }
     public IActionResult Delete(int id)
     {
-        _contactService.Delete(id);
-        return View(nameof(System.Index));
+        var contact = _contactService.GetById(id);
+        if (contact == null)
+        {
+            return NotFound();
+        }
+
+        return View(contact);
     }
-    
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        _contactService.Delete(id);
+        return RedirectToAction(nameof(Index));
+    }
 }
