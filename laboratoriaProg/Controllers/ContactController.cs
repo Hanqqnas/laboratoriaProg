@@ -1,6 +1,7 @@
 using laboratoriaProg.Models;
 using laboratoriaProg.Models.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace laboratoriaProg.Controllers;
 
@@ -22,7 +23,18 @@ public class ContactController : Controller
     //Formularz dodania kontaktu
     public IActionResult Add()
     {
-        return View();
+        ContactModel model = new ContactModel();
+        model.Organizations = _contactService
+            .GetOrganizations()
+            .Select(i => new SelectListItem()
+            { 
+                Value = i.Id.ToString(),
+                Text = i.Name,
+                Selected = i.Id == 1
+            })
+            .ToList();
+        return View(model);
+        
     }
     [HttpPost]
     //Odebranie i zapisanie nowego kontaktu
@@ -30,27 +42,39 @@ public class ContactController : Controller
     {
         if (!ModelState.IsValid)
         {
+            model.Organizations = GetOrganizationsSelectList();
             return View(model);
         }
         _contactService.Add(model);
         return RedirectToAction(nameof(Index));
-
     }
     public ActionResult Details(int id)
-    {
-        return View(_contactService.GetById(id));
+    { 
+        var contact = _contactService.GetById(id);
+        if (contact == null)
+        {
+            return NotFound();
+        }
+        return View(contact);
     }
     [HttpGet]
     public ActionResult Edit(int id)
     {
-        return View(_contactService.GetById(id));
+        var contact = _contactService.GetById(id);
+        if (contact == null)
+        {
+            return NotFound();
+        }
+        contact.Organizations = GetOrganizationsSelectList();
+        return View(contact);
     }
     [HttpPost]
     public ActionResult Edit(ContactModel model)
     {
         if (!ModelState.IsValid)
         {
-            return View();
+            model.Organizations = GetOrganizationsSelectList();
+            return View(model);
         }
         _contactService.Update(model);
         return RedirectToAction(nameof(System.Index));
@@ -71,7 +95,24 @@ public class ContactController : Controller
     [ValidateAntiForgeryToken]
     public ActionResult DeleteConfirmed(int id)
     {
+        var contact = _contactService.GetById(id);
+        if (contact == null)
+        {
+            return NotFound();
+        }
+
         _contactService.Delete(id);
         return RedirectToAction(nameof(Index));
     }
+    
+    private List<SelectListItem> GetOrganizationsSelectList()
+    {
+        return _contactService.GetOrganizations()
+            .Select(i => new SelectListItem
+            {
+                Value = i.Id.ToString(),
+                Text = i.Name
+            })
+            .ToList();    }
+
 }

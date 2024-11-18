@@ -1,5 +1,8 @@
 using System.ComponentModel.DataAnnotations;
+using laboratoriaProg.Models.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace laboratoriaProg.Models;
 
@@ -20,15 +23,22 @@ public class ContactModel
     [Display(Name = "Nazwisko")]
     public string LastName { get; set; }
     
-    [EmailAddress]
+    [EmailAddress(ErrorMessage = "Zły email!")]
+    [Display(Name = "Email")]
     public string Email { get; set; }
     
     [DataType(DataType.Date)]
     public DateOnly BirthDate { get; set; }
     
     [Phone]
-    [RegularExpression("\\d\\d\\ \\d\\d\\d \\d\\d\\d \\d\\d\\d", ErrorMessage = "Wpisz numer według wzoru: +xx xxx-xxx-xxx")]
+    [RegularExpression("\\d\\d\\ \\d\\d\\d \\d\\d\\d \\d\\d\\d", ErrorMessage = "Wpisz numer według wzoru: xx xxx xxx xxx")]
     public string PhoneNumber { get; set; }
     
     public Category Category { get; set; }
+    [Display(Name = "Organizacja")]
+    public int OrganizationId { get; set; }
+    public OrganizationEntity? Organization { get; set; }
+    
+    [ValidateNever]
+    public List<SelectListItem> Organizations { get; set; } = new List<SelectListItem>();
 }

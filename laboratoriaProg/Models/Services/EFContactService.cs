@@ -23,9 +23,14 @@ public class EFContactService : IContactService
 
     public void Delete(int id)
     {
-        _context.Remove(new ContactEntity() { Id = id });
-        _context.SaveChanges();
+        var contact = _context.Contacts.FirstOrDefault(c => c.Id == id);
+        if (contact != null)
+        {
+            _context.Contacts.Remove(contact);
+            _context.SaveChanges();
+        }
     }
+
 
     public List<ContactModel> GetAll()
     {
@@ -38,5 +43,10 @@ public class EFContactService : IContactService
     {
         var entity = _context.Contacts.Find(id);
         return entity != null ? ContactMapper.FromEntity(entity) : null;
+    }
+
+    public List<OrganizationEntity> GetOrganizations()
+    {
+        return _context.Organizations.ToList();
     }
 }

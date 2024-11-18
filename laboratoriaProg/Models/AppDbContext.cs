@@ -1,3 +1,4 @@
+using laboratoriaProg.Models.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace laboratoriaProg.Models;
@@ -5,6 +6,7 @@ namespace laboratoriaProg.Models;
 public class AppDbContext : DbContext
 {
     public DbSet<ContactEntity> Contacts { get; set; }
+    public DbSet<OrganizationEntity> Organizations { get; set; }
 
 
     public AppDbContext()
@@ -23,6 +25,37 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<OrganizationEntity>()
+            .OwnsOne(organization => organization.Address)
+            .HasData(
+                new {OrganizationEntityId = 101, City="Kraków", Street="św.Filipa 17"},
+                new {OrganizationEntityId = 102, City="Warszawa", Street="Dworcowa 9"}
+                );
+
+        modelBuilder.Entity<OrganizationEntity>()
+            .ToTable("organizations")
+            .HasData(
+                 new OrganizationEntity()
+                 {
+                     Id=101,
+                     Name="WSEI",
+                     NIP="21213356453",
+                     REGION= "21213356453"
+                 },
+                 new OrganizationEntity()
+                 {
+                     Id= 102,
+                     Name="PKP",
+                     NIP="21453356453",
+                     REGION= "21453356453"
+                 }
+            );
+        
+        modelBuilder.Entity<ContactEntity>()
+            .HasOne<OrganizationEntity>(c=>c.Organization)
+            .WithMany(o=>o.Contacts)
+            .HasForeignKey(c=>c.OrganizationId);
+        
         modelBuilder.Entity<ContactEntity>()
             .HasData(
                 new ContactEntity()
@@ -34,6 +67,7 @@ public class AppDbContext : DbContext
                     PhoneNumber = "531432234",
                     Email = "kk@wp.pl",
                     Created = DateTime.Now,
+                    OrganizationId = 101
                     
                 },
                 new ContactEntity()
@@ -44,7 +78,8 @@ public class AppDbContext : DbContext
                     BirthDate = new DateOnly(2000,12,11),
                     PhoneNumber = "531422234",
                     Email = "kn@gmail.com",
-                    Created = DateTime.Now
+                    Created = DateTime.Now,
+                    OrganizationId = 102
                 }
             );
     }

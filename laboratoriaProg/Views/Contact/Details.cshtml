@@ -1,8 +1,35 @@
-@model laboratoriaProg.Models.ContactModel?
+@model laboratoriaProg.Models.ContactModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Szczegóły kontaktu";
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>Szczegóły kontaktu</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Imię</dt>
+        <dd class="col-sm-9">@Model.FirstName</dd>
+
+        <dt class="col-sm-3">Nazwisko</dt>
+        <dd class="col-sm-9">@Model.LastName</dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+
+        <dt class="col-sm-3">Numer telefonu</dt>
+        <dd class="col-sm-9">@Model.PhoneNumber</dd>
+
+        <dt class="col-sm-3">Data urodzenia</dt>
+        <dd class="col-sm-9">@Model.BirthDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Kategoria</dt>
+        <dd class="col-sm-9">@Model.Category</dd>
+
+        <dt class="col-sm-3">Organizacja</dt>
+        <dd class="col-sm-9">@Model.Organizations</dd>
+    </dl>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Powrót</a>

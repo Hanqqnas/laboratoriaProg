@@ -4,10 +4,11 @@
 ViewBag.Title = "title";
 Layout = "_Layout";
 }
-<h2>Delete contact</h2>
 
-<from asp-action="DeleteConfirmed">
+<form asp-action="DeleteConfirmed">
     <input type="hidden" asp-for="Id"/>
-    <input type="submit" value="Delete" class="btn btn-danger"/>
+    <h4>Are you sure you do want to delete the contact?</h4>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <br/><br/>
     <a asp-action="Index">Back to list</a>
-</from>
+</form>

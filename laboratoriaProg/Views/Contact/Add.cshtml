@@ -23,10 +23,10 @@
         </div>
         <div class="mb-3">
             <label class="form-label" asp-for="Email">
-                Adres email
+                Email
             </label>
             <input class="form-control" asp-for="Email"/>
-            <span asp-validation-for="Email" class ="text-danger"></span>
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label class="form-label" asp-for="PhoneNumber">
@@ -52,6 +52,11 @@
                 asp-items="@Html.GetEnumSelectList<Category>()">
             </select>
             <span asp-validation-for="Category"></span>
+        </div>
+        <div class="mb-3">
+            <label class="form-control" asp-for="OrganizationId"></label>
+            <select asp-for="OrganizationId" asp-items="@Model.Organizations"></select>
+            <span asp-validation-for="OrganizationId" class ="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Zapisz</button>
     </form>

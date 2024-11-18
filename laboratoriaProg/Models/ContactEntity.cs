@@ -1,6 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using laboratoriaProg.Models.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 namespace laboratoriaProg.Models;
 
 [Table(name: "Contact")]
@@ -32,4 +35,7 @@ public class ContactEntity
     public Category Category { get; set; }
     
     public DateTime Created { get; set; }
+    
+    public int OrganizationId { get; set; }
+    public OrganizationEntity? Organization { get; set; }
 }
