@@ -1,3 +1,5 @@
+using laboratoriaProg.Models;
+
 namespace laboratoriaProg.Models.Services;
 
 public class EFContactService : IContactService

@@ -1,86 +1,125 @@
 using laboratoriaProg.Models.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace laboratoriaProg.Models;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<IdentityUser>
 {
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
     public DbSet<ContactEntity> Contacts { get; set; }
     public DbSet<OrganizationEntity> Organizations { get; set; }
 
-
-    public AppDbContext()
-    {
-        var folder = Environment.SpecialFolder.LocalApplicationData;
-        var path = Environment.GetFolderPath(folder);
-        DbPath = System.IO.Path.Join(path, "contacts.db");
-    }
-
-    private string DbPath { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite($"DataSource={DbPath}");
-    }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<OrganizationEntity>()
-            .OwnsOne(organization => organization.Address)
-            .HasData(
-                new {OrganizationEntityId = 101, City="Kraków", Street="św.Filipa 17"},
-                new {OrganizationEntityId = 102, City="Warszawa", Street="Dworcowa 9"}
-                );
+        base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<OrganizationEntity>()
-            .ToTable("organizations")
-            .HasData(
-                 new OrganizationEntity()
-                 {
-                     Id=101,
-                     Name="WSEI",
-                     NIP="21213356453",
-                     REGION= "21213356453"
-                 },
-                 new OrganizationEntity()
-                 {
-                     Id= 102,
-                     Name="PKP",
-                     NIP="21453356453",
-                     REGION= "21453356453"
-                 }
-            );
-        
-        modelBuilder.Entity<ContactEntity>()
-            .HasOne<OrganizationEntity>(c=>c.Organization)
-            .WithMany(o=>o.Contacts)
-            .HasForeignKey(c=>c.OrganizationId);
-        
-        modelBuilder.Entity<ContactEntity>()
-            .HasData(
-                new ContactEntity()
-                {
-                    Id = 1,
-                    FirstName = "Kamil",
-                    LastName = "Kowalski",
-                    BirthDate = new DateOnly(2000,10,10),
-                    PhoneNumber = "531432234",
-                    Email = "kk@wp.pl",
-                    Created = DateTime.Now,
-                    OrganizationId = 101
-                    
-                },
-                new ContactEntity()
-                {
-                    Id = 2,
-                    FirstName = "Kamil",
-                    LastName = "Nowacki",
-                    BirthDate = new DateOnly(2000,12,11),
-                    PhoneNumber = "531422234",
-                    Email = "kn@gmail.com",
-                    Created = DateTime.Now,
-                    OrganizationId = 102
-                }
-            );
+        string USER_ROLE_ID = Guid.NewGuid().ToString();
+        string ADMIN_ROLE_ID = Guid.NewGuid().ToString();
+
+        modelBuilder.Entity<IdentityRole>().HasData(
+            new IdentityRole
+            {
+                Id = USER_ROLE_ID,
+                Name = "user",
+                NormalizedName = "USER"
+            },
+            new IdentityRole
+            {
+                Id = ADMIN_ROLE_ID,
+                Name = "admin",
+                NormalizedName = "ADMIN"
+            }
+        );
+
+        var user = new IdentityUser
+        {
+            Id = Guid.NewGuid().ToString(),
+            Email = "user@domain.com",
+            NormalizedEmail = "USER@DOMAIN.COM",
+            UserName = "user",
+            NormalizedUserName = "USER",
+            EmailConfirmed = true
+        };
+
+        var admin = new IdentityUser
+        {
+            Id = Guid.NewGuid().ToString(),
+            Email = "admin@domain.com",
+            NormalizedEmail = "ADMIN@DOMAIN.COM",
+            UserName = "admin",
+            NormalizedUserName = "ADMIN",
+            EmailConfirmed = true
+        };
+
+        PasswordHasher<IdentityUser> hasher = new PasswordHasher<IdentityUser>();
+        user.PasswordHash = hasher.HashPassword(user, "User123!");
+        admin.PasswordHash = hasher.HashPassword(admin, "Admin123!");
+
+        modelBuilder.Entity<IdentityUser>().HasData(user, admin);
+
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>
+            {
+                RoleId = ADMIN_ROLE_ID,
+                UserId = admin.Id
+            },
+            new IdentityUserRole<string>
+            {
+                RoleId = USER_ROLE_ID,
+                UserId = user.Id
+            }
+        );
+
+        modelBuilder.Entity<OrganizationEntity>().HasData(
+            new OrganizationEntity
+            {
+                Id = 101,
+                Name = "WSEI",
+                NIP = "283792834",
+                REGON = "2837294234",
+                REGION = "Małoposka"
+            },
+            new OrganizationEntity
+            {
+                Id = 102,
+                Name = "PKP",
+                NIP = "283792834",
+                REGON = "2837294234",
+                REGION = "Wielkopolska"
+            }
+        );
+
+        modelBuilder.Entity<ContactEntity>().HasData(
+            new ContactEntity
+            {
+                Id = 1,
+                FirstName = "Adam",
+                LastName = "Kowal",
+                Email = "adam@wsei.edu.pl",
+                PhoneNumber = "123456789",
+                BirthDate = new DateOnly(2000, 10, 10),
+                Created = DateTime.Now,
+                OrganizationId = 101
+            },
+            new ContactEntity
+            {
+                Id = 2,
+                FirstName = "Ewa",
+                LastName = "Kowal",
+                Email = "ewa@wsei.edu.pl",
+                PhoneNumber = "123456789",
+                BirthDate = new DateOnly(2000, 10, 10),
+                Created = DateTime.Now,
+                OrganizationId = 102
+            }
+        );
+
+        modelBuilder.Entity<OrganizationEntity>().OwnsOne(o => o.Address).HasData(
+            new { OrganizationEntityId = 101, City = "Kraków", Street = "św. Filipa 17" },
+            new { OrganizationEntityId = 102, City = "Warszawa", Street = "Dworcowa 9" }
+        );
     }
 }

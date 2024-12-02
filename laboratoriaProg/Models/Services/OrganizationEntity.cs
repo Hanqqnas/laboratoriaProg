@@ -6,8 +6,9 @@ public class OrganizationEntity
     public string Name { get; set; }
     public string NIP { get; set; }
     public string REGION { get; set; }
-    public Address? Address { get; set; } //klasa osadzona
-    public ISet<ContactEntity> Contacts { get; set; } //pole nawigacyjne
+    public Address? Address { get; set; } 
+    public ISet<ContactEntity> Contacts { get; set; } 
+    public string REGON { get; set; }
 }
 
 public class Address

@@ -1,5 +1,6 @@
 using laboratoriaProg.Models;
 using laboratoriaProg.Models.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -13,7 +14,7 @@ public class ContactController : Controller
     {
         _contactService = contactService;
     }
-
+    [AllowAnonymous]
     //Lista kontaktów
     public IActionResult Index()
     {
