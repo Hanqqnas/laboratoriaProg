@@ -1,0 +1,23 @@
+@model laboratoriaProg.Models.Movies.MovieCast
+
+@{
+ViewData["Title"] = "Dodaj postać do filmu";
+}
+
+<h2>Dodaj postać do filmu</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="MovieId">Wybierz film:</label>
+        <select asp-for="MovieId" asp-items="ViewBag.Movies" class="form-control" required>
+            <option value="">-- Wybierz film --</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="CharacterName">Nazwa postaci:</label>
+        <input asp-for="CharacterName" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>

@@ -1,0 +1,114 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<dynamic>
+
+@{
+ViewData["Title"] = "Lista aktorów";
+
+int totalPages = (int)Math.Ceiling((double)ViewBag.TotalActors / ViewBag.PageSize);
+int currentPage = ViewBag.CurrentPage;
+int pageSize = ViewBag.PageSize;
+}
+
+<h1>Lista aktorów</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Imię i nazwisko</th>
+        <th>Ilość filmów</th>
+        <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var actor in Model)
+    {
+    <tr>
+        <td>@actor.PersonName</td>
+        <td>
+            <a asp-controller="Actors" asp-action="Movies" asp-route-actorId="@actor.PersonId">
+                @actor.MovieCount
+            </a>
+        </td>
+        <td>
+            <div class="accordion" id="accordion-@actor.PersonId">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-@actor.PersonId">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@actor.PersonId" aria-expanded="false" aria-controls="collapse-@actor.PersonId">
+                            View Roles
+                        </button>
+                    </h2>
+                    <div id="collapse-@actor.PersonId" class="accordion-collapse collapse" aria-labelledby="heading-@actor.PersonId" data-bs-parent="#accordion-@actor.PersonId">
+                        <div class="accordion-body">
+                            <ul>
+                                @foreach (var role in actor.Roles)
+                                {
+                                <li>@role</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+<nav aria-label="Paginacja">
+    <ul class="pagination justify-content-center">
+
+        @if (currentPage > 1)
+        {
+        <li class="page-item">
+            <a class="page-link" asp-controller="Actors" asp-action="Index" asp-route-page="1" asp-route-size="@pageSize">Pierwsza</a>
+        </li>
+        }
+
+        @if (currentPage > 1)
+        {
+        <li class="page-item">
+            <a class="page-link" asp-controller="Actors" asp-action="Index" asp-route-page="@(currentPage - 1)" asp-route-size="@pageSize">Poprzednia</a>
+        </li>
+        }
+
+        @if (currentPage > 3)
+        {
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+        }
+
+        @for (int i = Math.Max(1, currentPage - 2); i <= Math.Min(totalPages, currentPage + 2); i++)
+        {
+        if (i == currentPage)
+        {
+        <li class="page-item active"><span class="page-link">@i</span></li>
+        }
+        else
+        {
+        <li class="page-item">
+            <a class="page-link" asp-controller="Actors" asp-action="Index" asp-route-page="@i" asp-route-size="@pageSize">@i</a>
+        </li>
+        }
+        }
+
+        @if (currentPage < totalPages - 2)
+        {
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+        }
+        
+        @if (currentPage < totalPages)
+        {
+        <li class="page-item">
+            <a class="page-link" asp-controller="Actors" asp-action="Index" asp-route-page="@(currentPage + 1)" asp-route-size="@pageSize">Następna</a>
+        </li>
+        }
+
+        @if (currentPage < totalPages)
+        {
+        <li class="page-item">
+            <a class="page-link" asp-controller="Actors" asp-action="Index" asp-route-page="@totalPages" asp-route-size="@pageSize">Ostatnia</a>
+        </li>
+        }
+    </ul>
+</nav>
+    

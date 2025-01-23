@@ -1,0 +1,73 @@
+@model IEnumerable<laboratoriaProg.Models.Movies.Movie>
+
+@{
+    ViewData["Title"] = "Filmy aktora";
+}
+
+<h1>Filmy z udziałem @ViewBag.ActorName (@ViewBag.TotalMovies)</h1>
+@if (User.Identity.IsAuthenticated)
+{
+<a asp-controller="Movies" asp-action="Create" class="btn btn-primary">Dodaj postać</a>
+}
+else
+{
+<a asp-area="Identity" asp-page="/Account/Login" class="btn btn-warning">Zaloguj się, aby dodać postać</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Data wydania</th>
+            <th>Popularność</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Title</td>
+                <td>@movie.ReleaseDate?.ToString("yyyy-MM-dd")</td>
+                <td>@movie.Popularity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<nav aria-label="Paginacja">
+    <ul class="pagination">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="1" asp-route-size="@ViewBag.PageSize">Pierwsza</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-size="@ViewBag.PageSize">Poprzednia</a>
+            </li>
+        }
+
+        @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+        {
+            if (i == ViewBag.CurrentPage)
+            {
+                <li class="page-item active"><span class="page-link">@i</span></li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@i" asp-route-size="@ViewBag.PageSize">@i</a>
+                </li>
+            }
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-size="@ViewBag.PageSize">Następna</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@ViewBag.TotalPages" asp-route-size="@ViewBag.PageSize">Ostatnia</a>
+            </li>
+        }
+    </ul>
+</nav>

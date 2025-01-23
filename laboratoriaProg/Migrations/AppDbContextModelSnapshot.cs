@@ -15,7 +15,7 @@ namespace laboratoriaProg.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.1");
 
             modelBuilder.Entity("laboratoriaProg.Models.ContactEntity", b =>
                 {
@@ -66,7 +66,7 @@ namespace laboratoriaProg.Migrations
                             Id = 1,
                             BirthDate = new DateOnly(2000, 10, 10),
                             Category = 0,
-                            Created = new DateTime(2024, 11, 18, 22, 42, 45, 85, DateTimeKind.Local).AddTicks(9167),
+                            Created = new DateTime(2025, 1, 22, 12, 24, 38, 104, DateTimeKind.Local).AddTicks(4797),
                             Email = "kk@wp.pl",
                             FirstName = "Kamil",
                             LastName = "Kowalski",
@@ -78,7 +78,7 @@ namespace laboratoriaProg.Migrations
                             Id = 2,
                             BirthDate = new DateOnly(2000, 12, 11),
                             Category = 0,
-                            Created = new DateTime(2024, 11, 18, 22, 42, 45, 85, DateTimeKind.Local).AddTicks(9220),
+                            Created = new DateTime(2025, 1, 22, 12, 24, 38, 106, DateTimeKind.Local).AddTicks(7596),
                             Email = "kn@gmail.com",
                             FirstName = "Kamil",
                             LastName = "Nowacki",
