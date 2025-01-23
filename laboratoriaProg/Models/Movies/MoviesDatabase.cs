@@ -203,9 +203,10 @@ public partial class MoviesDatabase : DbContext
 
         modelBuilder.Entity<MovieCast>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("movie_cast");
+            modelBuilder.Entity<MovieCast>()
+                .ToTable("movie_cast")  
+                .HasKey(mc => new { mc.MovieId, mc.PersonId });
+            base.OnModelCreating(modelBuilder);
 
             entity.Property(e => e.CastOrder)
                 .HasDefaultValueSql("NULL")

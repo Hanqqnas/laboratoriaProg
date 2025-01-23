@@ -1,0 +1,29 @@
+@model dynamic
+
+@{
+ViewData["Title"] = "Dodaj film dla " + ViewBag.ActorName;
+}
+
+<h2>Add movie with @ViewBag.ActorName</h2>
+
+<form asp-action="AddCharacter" method="post">
+    <input type="hidden" name="actorId" value="@ViewBag.ActorId" />
+
+    <div class="form-group">
+        <label for="movieId">Select movie:</label>
+        <select name="movieId" class="form-control">
+            @foreach (var movie in ViewBag.Movies)
+            {
+            <option value="@movie.Value">@movie.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="characterName">Character name:</label>
+        <input type="text" name="characterName" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Add movie</button>
+</form>
+
+<a asp-action="Movies" asp-route-actorId="@ViewBag.ActorId">Back to movies' list</a>

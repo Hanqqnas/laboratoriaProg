@@ -1,76 +1,46 @@
-@model IEnumerable<laboratoriaProg.Models.Movies.Movie>
+@model IEnumerable<dynamic>
 
 @{
-    ViewData["Title"] = "Filmy aktora";
+ViewData["Title"] = $"{ViewBag.ActorName} Movies";
 }
 
-<h1>Filmy z udziałem @ViewBag.ActorName (@ViewBag.TotalMovies)</h1>
-@if (User.Identity.IsAuthenticated)
-{
+<h1>Movies with @ViewBag.ActorName</h1>
+
 <a asp-controller="Actors" asp-action="AddCharacter" asp-route-actorId="@ViewBag.ActorId" class="btn btn-primary">
-    Dodaj postać do filmu
+    Add movie
 </a>
 
-}
-else
-{
-<a asp-area="Identity" asp-page="/Account/Login" class="btn btn-warning">Zaloguj się, aby dodać postać</a>
-}
 
 <table class="table">
     <thead>
-        <tr>
-            <th>Tytuł</th>
-            <th>Data wydania</th>
-            <th>Popularność</th>
-        </tr>
+    <tr>
+        <th>Title</th>
+        <th>Budget</th>
+        <th>Popularity</th>
+        <th>Homepage</th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var movie in Model)
-        {
-            <tr>
-                <td>@movie.Title</td>
-                <td>@movie.ReleaseDate?.ToString("yyyy-MM-dd")</td>
-                <td>@movie.Popularity</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<nav aria-label="Paginacja">
-    <ul class="pagination">
-        @if (ViewBag.CurrentPage > 1)
-        {
-            <li class="page-item">
-                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="1" asp-route-size="@ViewBag.PageSize">Pierwsza</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@(ViewBag.CurrentPage - 1)" asp-route-size="@ViewBag.PageSize">Poprzednia</a>
-            </li>
-        }
-
-        @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
-        {
-            if (i == ViewBag.CurrentPage)
+    @foreach (var movie in Model)
+    {
+    <tr>
+        <td>@movie.Title</td>
+        <td>@(movie.Budget?.ToString("C") ?? "Unknown")</td>
+        <td>@movie.Popularity</td>
+        <td>
+            @if (!string.IsNullOrEmpty(movie.Homepage))
             {
-                <li class="page-item active"><span class="page-link">@i</span></li>
+            <a href="@movie.Homepage" target="_blank">Homepage</a>
             }
             else
             {
-                <li class="page-item">
-                    <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@i" asp-route-size="@ViewBag.PageSize">@i</a>
-                </li>
+            <span>No homepage</span>
             }
-        }
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
 
-        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-        {
-            <li class="page-item">
-                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@(ViewBag.CurrentPage + 1)" asp-route-size="@ViewBag.PageSize">Następna</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" asp-action="Movies" asp-route-actorId="@ViewBag.ActorId" asp-route-page="@ViewBag.TotalPages" asp-route-size="@ViewBag.PageSize">Ostatnia</a>
-            </li>
-        }
-    </ul>
-</nav>
+
+<a asp-action="Index">Back to Actors' list</a>

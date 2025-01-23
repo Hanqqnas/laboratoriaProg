@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using laboratoriaProg.Models.ViewModels;
 
 public class ActorsController : Controller
 {
@@ -16,6 +20,7 @@ public class ActorsController : Controller
     public async Task<IActionResult> Index(int page = 1, int size = 20)
     {
         int totalActors = await _context.People.CountAsync();
+
         ViewBag.TotalActors = totalActors;
         ViewBag.CurrentPage = page;
         ViewBag.PageSize = size;
@@ -25,11 +30,11 @@ public class ActorsController : Controller
             .OrderBy(a => a.PersonName)
             .Skip((page - 1) * size)
             .Take(size)
-            .Select(a => new
+            .Select(a => new ActorViewModel
             {
-                a.PersonId,
-                a.PersonName,
-                MovieCount = _context.MovieCasts.Count(mc => mc.PersonId == a.PersonId) 
+                PersonId = a.PersonId,
+                PersonName = a.PersonName,
+                MovieCount = _context.MovieCasts.Count(mc => mc.PersonId == a.PersonId)
             })
             .ToListAsync();
 
@@ -43,21 +48,21 @@ public class ActorsController : Controller
             .GroupBy(mc => mc.PersonId)
             .ToDictionary(g => g.Key, g => g.Select(mc => mc.CharacterName).ToList());
 
-        var actorsWithRoles = actors.Select(a => new
+        foreach (var actor in actors)
         {
-            a.PersonId,
-            a.PersonName,
-            a.MovieCount,
-            Roles = groupedRoles.ContainsKey(a.PersonId) ? groupedRoles[a.PersonId] : new List<string>() 
-        }).ToList();
+            if (groupedRoles.ContainsKey(actor.PersonId))
+            {
+                actor.Roles = groupedRoles[actor.PersonId];
+            }
+        }
 
-        return View(actorsWithRoles);
+        return View(actors);
     }
-    
+
+
     public async Task<IActionResult> Movies(int actorId, int page = 1, int size = 20)
     {
-        if (actorId <= 0) return BadRequest("Actor ID is required.");
-        if (page < 1 || size <= 0) return BadRequest("Invalid pagination parameters.");
+        if (actorId <= 0) return BadRequest("Actor ID is required."); 
 
         var actor = await _context.People.FirstOrDefaultAsync(p => p.PersonId == actorId);
         if (actor == null) return NotFound("Actor not found.");
@@ -71,7 +76,14 @@ public class ActorsController : Controller
             .OrderByDescending(mc => mc.Movie.Popularity)
             .Skip((page - 1) * size)
             .Take(size)
-            .Select(mc => mc.Movie)
+            .Select(mc => new
+            {
+                mc.Movie.MovieId,
+                mc.Movie.Title,
+                mc.Movie.Budget,
+                mc.Movie.Popularity,
+                mc.Movie.Homepage
+            })
             .AsNoTracking()
             .ToListAsync();
 
@@ -82,13 +94,12 @@ public class ActorsController : Controller
         ViewBag.PageSize = size;
         ViewBag.TotalPages = totalPages;
 
-        return View(movies);
+        return View("Movies", movies);
     }
 
-    // ✅ [GET] Add movie form for an actor
     [Authorize]
     [HttpGet]
-    public async Task<IActionResult> AddMovie(int actorId)
+    public async Task<IActionResult> AddCharacter(int actorId)
     {
         if (actorId <= 0) return BadRequest("Actor ID is required.");
 
@@ -105,11 +116,11 @@ public class ActorsController : Controller
         return View();
     }
 
-    // ✅ [POST] Handle adding a movie for an actor
+
     [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddMovie(int actorId, int movieId, string characterName)
+    public async Task<IActionResult> AddCharacter(int actorId, int movieId, string characterName)
     {
         if (actorId <= 0) return BadRequest("Actor ID is required.");
 
@@ -125,9 +136,11 @@ public class ActorsController : Controller
             CharacterName = characterName
         };
 
-        _context.MovieCasts.Add(newMovieCast);
+        _context.Set<MovieCast>().Add(newMovieCast); 
         await _context.SaveChangesAsync();
+
 
         return RedirectToAction("Movies", new { actorId });
     }
+
 }

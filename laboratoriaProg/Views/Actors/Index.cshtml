@@ -9,14 +9,14 @@ int currentPage = ViewBag.CurrentPage;
 int pageSize = ViewBag.PageSize;
 }
 
-<h1>Lista aktorów</h1>
+<h1>List of Actors</h1>
 
 <table class="table">
     <thead>
     <tr>
-        <th>Imię i nazwisko</th>
-        <th>Ilość filmów</th>
-        <th>Role</th>
+        <th>Name and surname</th>
+        <th>Quantity of movies</th>
+        <th>Roles</th>
     </tr>
     </thead>
     <tbody>
@@ -95,7 +95,7 @@ int pageSize = ViewBag.PageSize;
         {
         <li class="page-item disabled"><span class="page-link">...</span></li>
         }
-        
+
         @if (currentPage < totalPages)
         {
         <li class="page-item">
