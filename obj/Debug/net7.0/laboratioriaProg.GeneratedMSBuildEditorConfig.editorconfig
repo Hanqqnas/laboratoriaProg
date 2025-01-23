@@ -1,0 +1,127 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = laboratioriaProg
+build_property.RootNamespace = laboratioriaProg
+build_property.ProjectDir = C:\Users\48531\RiderProjects\laboratoriaProg\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\48531\RiderProjects\laboratoriaProg
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXEFyZWFzXElkZW50aXR5XFBhZ2VzXEFjY291bnRcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXEFyZWFzXElkZW50aXR5XFBhZ2VzXEFjY291bnRcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXEFyZWFzXElkZW50aXR5XFBhZ2VzXEFjY291bnRcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXEFyZWFzXElkZW50aXR5XFBhZ2VzXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXEFyZWFzXElkZW50aXR5XFBhZ2VzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXEFyZWFzXElkZW50aXR5XFBhZ2VzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Actors/AddMovie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEFjdG9yc1xBZGRNb3ZpZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Actors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEFjdG9yc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Actors/Movies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEFjdG9yc1xNb3ZpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Contact/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXENvbnRhY3RcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Contact/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXENvbnRhY3RcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Contact/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXENvbnRhY3RcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Contact/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXENvbnRhY3RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Contact/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXENvbnRhY3RcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/AgeCalculator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEhvbWVcQWdlQ2FsY3VsYXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/Calculator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEhvbWVcQ2FsY3VsYXRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/CustomError.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEhvbWVcQ3VzdG9tRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEhvbWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXEhvbWVcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Movies/AddCharacter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXE1vdmllc1xBZGRDaGFyYWN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Movies/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXE1vdmllc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXFNoYXJlZFxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXFNoYXJlZFxfTG9naW5QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/48531/RiderProjects/laboratoriaProg/laboratoriaProg/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = bGFib3JhdG9yaWFQcm9nXFZpZXdzXFNoYXJlZFxfTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-alrqspitbb

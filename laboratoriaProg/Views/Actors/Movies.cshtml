@@ -7,7 +7,10 @@
 <h1>Filmy z udziałem @ViewBag.ActorName (@ViewBag.TotalMovies)</h1>
 @if (User.Identity.IsAuthenticated)
 {
-<a asp-controller="Movies" asp-action="Create" class="btn btn-primary">Dodaj postać</a>
+<a asp-controller="Actors" asp-action="AddCharacter" asp-route-actorId="@ViewBag.ActorId" class="btn btn-primary">
+    Dodaj postać do filmu
+</a>
+
 }
 else
 {

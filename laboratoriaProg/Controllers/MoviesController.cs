@@ -13,44 +13,48 @@ public class MoviesController : Controller
     {
         _context = context;
     }
+    [Authorize]
     [HttpGet]
     public IActionResult Create()
     {
-        ViewBag.Movies = new SelectList(_context.Movies, "MovieId", "Title");
+        ViewBag.Movies = new SelectList(_context.Movies.OrderBy(m => m.Title), "MovieId", "Title");
+        ViewBag.Actors = new SelectList(_context.People.OrderBy(p => p.PersonName), "PersonId", "PersonName");
         return View();
     }
 
+    [Authorize]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(MovieCast model)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            try
-            {
-                var movieExists = await _context.Movies.AnyAsync(m => m.MovieId == model.MovieId);
-                var personExists = await _context.People.AnyAsync(p => p.PersonId == model.PersonId);
-
-                if (!movieExists || !personExists)
-                {
-                    ModelState.AddModelError("", "Wybrany film lub aktor nie istnieje.");
-                    return View(model);
-                }
-
-                _context.MovieCasts.Add(model);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index", "Actors");
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", $"Błąd: {ex.Message}");
-            }
+            ViewBag.Movies = new SelectList(_context.Movies.OrderBy(m => m.Title), "MovieId", "Title");
+            ViewBag.Actors = new SelectList(_context.People.OrderBy(p => p.PersonName), "PersonId", "PersonName");
+            return View(model);
         }
 
-        ViewBag.Movies = new SelectList(await _context.Movies.ToListAsync(), "MovieId", "Title");
-        ViewBag.People = new SelectList(await _context.People.ToListAsync(), "PersonId", "PersonName");
+        try
+        {
+            var movieExists = await _context.Movies.AnyAsync(m => m.MovieId == model.MovieId);
+            var personExists = await _context.People.AnyAsync(p => p.PersonId == model.PersonId);
 
-        return View(model);
+            if (!movieExists || !personExists)
+            {
+                ModelState.AddModelError("", "Wybrany film lub aktor nie istnieje.");
+                return View(model);
+            }
+
+            _context.MovieCasts.Add(model);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Movies", "Actors", new { actorId = model.PersonId });
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("", $"Błąd: {ex.Message}");
+            return View(model);
+        }
     }
+
 }
